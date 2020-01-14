@@ -1,0 +1,55 @@
+{
+  "name": "api-express-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clear:build": "rimraf -f dist",
+    "compile:watch": "yarn run clear:build && tsc --watch",
+    "dev": "set NODE_ENV=development && nodemon dist/src/app.js",
+    "test": "jest --detectOpenHandles --watchAll"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "pg": "^7.17.1",
+    "pg-hstore": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.21.3",
+    "sequelize-typescript": "^1.1.0",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.29",
+    "@types/body-parser": "^1.17.1",
+    "@types/express": "^4.17.2",
+    "@types/jest": "^24.0.25",
+    "@types/morgan": "^1.7.37",
+    "@types/supertest": "^2.0.8",
+    "@types/uuid": "^3.4.6",
+    "@types/validator": "^12.0.1",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "rimraf": "^3.0.0",
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.3.0",
+    "typescript": "^3.7.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
