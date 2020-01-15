@@ -1,13 +1,13 @@
 import { Env } from '../common/env';
-import { Sequelize } from 'sequelize-typescript';
-import { UserModel } from '../api/models/user.model';
+import * as Sequelize from 'sequelize';
+// import { UserModel } from '../api/models/user.model';
 
 export class Database {
-  public connection: Sequelize;
+  public connection: Sequelize.Sequelize;
   private env = Env();
 
   constructor() {
-    this.connection = new Sequelize({
+    this.connection = new Sequelize.Sequelize({
       database: this.env.database.database,
       host: this.env.database.host,
       username: this.env.database.username,
@@ -17,7 +17,13 @@ export class Database {
         timestamps: true,
         underscored: true,
       },
-      models: [UserModel],
     });
+
+    const db = {
+      sequelize: this.connection,
+      Sequelize,
+    }
+
+
   }
 }

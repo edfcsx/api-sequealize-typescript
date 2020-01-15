@@ -2,7 +2,7 @@ import { Server } from './loaders/express.loader';
 import { Database } from './loaders/database.loader';
 
 import { utilController } from './api/controllers/util.controller';
-import { userController } from './api/controllers/user.controller';
+import { accountController } from './api/controllers/account.controller';
 
 class Main {
   server = new Server();
@@ -12,13 +12,13 @@ class Main {
     this.server.bootstrap({
       controllers: [
         utilController,
-        userController,
+        accountController,
       ]
     })
     .then((app) => {
       const { port, address } = <any>app.server?.address();
       console.log(`Server running on address ${address} in port ${port}`);
-      this.initializeDatabase();
+      // this.initializeDatabase();
     })
     .catch((err) => this.shutdown(err));
   }

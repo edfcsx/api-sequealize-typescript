@@ -1,11 +1,12 @@
-import { Model, Table, Column, DataType, BeforeCreate, BeforeBulkCreate } from 'sequelize-typescript';
+import { Model, Table, Column, DataType, BeforeCreate } from 'sequelize-typescript';
 import UUIDV1 from 'uuid/v1';
 
-@Table({ tableName: 'user', timestamps: true, charset: 'utf8', underscored: true })
+@Table({ tableName: 'users', timestamps: true, charset: 'utf8', underscored: true })
 export class UserModel extends Model<UserModel> {
   @Column({
     primaryKey: true,
     allowNull: false,
+    unique: true,
     type: DataType.UUID,
   }) id!: string;
 
@@ -25,9 +26,10 @@ export class UserModel extends Model<UserModel> {
     type: DataType.STRING
   }) password!: string;
 
-  @BeforeBulkCreate
-  static beforeCreateHook(instance: UserModel, options: any) {
-    instance.set('id', UUIDV1());
+  @BeforeCreate
+  static beforeCreateHook(instance: UserModel) {
+    console.log('EXECUTOOOOOOOU')
+    instance.id = UUIDV1();
   }
 }
 
